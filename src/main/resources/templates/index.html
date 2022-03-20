@@ -6,13 +6,17 @@
     <title>Demo</title>
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width"/>
+
     <base href="/"/>
+
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+
     <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
     <script type="text/javascript" th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 
     <script th:inline="javascript">
         /*<![CDATA[*/
+
         let contextPath    = /*[[@{/}]]*/
         console.log("cp: ", contextPath)
         $.get(contextPath + "api/user", function(data) {
@@ -35,7 +39,6 @@
   <div class="container authenticated" style="display:none">
     Logged in as: <span id="user"></span>
   </div>
-
 
 </body>
 </html>

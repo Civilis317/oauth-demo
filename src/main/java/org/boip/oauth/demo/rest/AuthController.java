@@ -17,6 +17,7 @@ public class AuthController {
 
     @GetMapping("/user")
     public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
+        log.debug("OAuth2 principal: {}", principal);
         return Collections.singletonMap("name", principal.getAttribute("name"));
     }
 }
