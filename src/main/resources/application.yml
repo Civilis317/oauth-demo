@@ -1,0 +1,55 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            clientId: ${GITHUB_CLIENT_ID}
+            clientSecret: ${GITHUB_CLIENT_SECRET}
+
+server:
+  servlet:
+    context-path: /playground/demo
+  error:
+    include-message: always
+  tomcat:
+    remoteip:
+      remote-ip-header: x-forwarded-for
+      protocol-header: x-forwarded-proto
+
+logging:
+  level:
+    org.springframework: ${LOGLEVEL_SPRING:INFO}
+    org.boip.oauth.demo: ${LOGLEVEL_APPLICATION:INFO}
+
+management:
+  health:
+    db:
+      enabled: false
+    ldap:
+      enabled: false
+    rabbit:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+    enabled-by-default: false
+  endpoint:
+    health:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  server:
+    port: 8090
+
+http:
+  rest:
+    connect-timeout: ${REST_CONNECT_TIMEOUT:3000}
+    read-timeout: ${REST_READ_TIMEOUT:5000}
